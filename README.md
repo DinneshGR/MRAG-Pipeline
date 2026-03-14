@@ -17,46 +17,11 @@ The pipeline processes text, tables, and images, stores embeddings in a vector d
 
 ⚡ Retrieval-Augmented Generation Pipeline
 
-📂 Project Structure
-MRAG-Pipeline/
-│
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-├── notebooks/
-│   └── MRAG_Pipeline.ipynb
-│
-├── data/
-│   ├── raw/
-│   │   └── attention-is-all-you-need.pdf
-│   │
-│   └── processed/
-│       ├── texts/
-│       ├── tables/
-│       └── images/
-│
-├── vector_store/
-│   └── chroma_db/
-│
-├── database/
-│   ├── chroma.sqlite3
-│   └── document_store.db
-│
-├── outputs/
-│   └── MRAG_Output/
-│
-└── src/
-    ├── ingestion/
-    ├── processing/
-    ├── embedding/
-    ├── retrieval/
-    └── pipeline/
 ⚙️ Installation
 
 Clone the repository:
 
-git clone https://github.com/your-username/MRAG-Pipeline.git
+git clone https://github.com/your-Dinnesh G R/MRAG-Pipeline.git
 cd MRAG-Pipeline
 
 Install dependencies:
@@ -119,11 +84,7 @@ Web interface for document querying
 
 Support for multiple document formats
 
-📜 License
-
-This project is licensed under the MIT License.
-
 👨‍💻 Author
 
 Your Name
-GitHub: https://github.com/your-username
+GitHub: https://github.com/Dinnesh G R
