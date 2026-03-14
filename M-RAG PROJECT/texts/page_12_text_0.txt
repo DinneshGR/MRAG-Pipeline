@@ -1,0 +1,43 @@
+[25] MitchellPMarcus,MaryAnnMarcinkiewicz,andBeatriceSantorini.Buildingalargeannotated
+corpusofenglish: Thepenntreebank. Computationallinguistics,19(2):313–330,1993.
+[26] DavidMcClosky,EugeneCharniak,andMarkJohnson. Effectiveself-trainingforparsing. In
+ProceedingsoftheHumanLanguageTechnologyConferenceoftheNAACL,MainConference,
+pages152–159.ACL,June2006.
+[27] AnkurParikh,OscarTäckström,DipanjanDas,andJakobUszkoreit. Adecomposableattention
+model. InEmpiricalMethodsinNaturalLanguageProcessing,2016.
+[28] RomainPaulus,CaimingXiong,andRichardSocher. Adeepreinforcedmodelforabstractive
+summarization. arXivpreprintarXiv:1705.04304,2017.
+[29] Slav Petrov, Leon Barrett, Romain Thibaux, and Dan Klein. Learning accurate, compact,
+and interpretable tree annotation. In Proceedings of the 21st International Conference on
+ComputationalLinguisticsand44thAnnualMeetingoftheACL,pages433–440.ACL,July
+2006.
+[30] OfirPressandLiorWolf. Usingtheoutputembeddingtoimprovelanguagemodels. arXiv
+preprintarXiv:1608.05859,2016.
+[31] RicoSennrich,BarryHaddow,andAlexandraBirch. Neuralmachinetranslationofrarewords
+withsubwordunits. arXivpreprintarXiv:1508.07909,2015.
+[32] NoamShazeer,AzaliaMirhoseini,KrzysztofMaziarz,AndyDavis,QuocLe,GeoffreyHinton,
+andJeffDean. Outrageouslylargeneuralnetworks: Thesparsely-gatedmixture-of-experts
+layer. arXivpreprintarXiv:1701.06538,2017.
+[33] NitishSrivastava,GeoffreyEHinton,AlexKrizhevsky,IlyaSutskever,andRuslanSalakhutdi-
+nov. Dropout: asimplewaytopreventneuralnetworksfromoverfitting. JournalofMachine
+LearningResearch,15(1):1929–1958,2014.
+[34] Sainbayar Sukhbaatar, Arthur Szlam, Jason Weston, and Rob Fergus. End-to-end memory
+networks. InC.Cortes, N.D.Lawrence, D.D.Lee, M.Sugiyama, andR.Garnett, editors,
+AdvancesinNeuralInformationProcessingSystems28,pages2440–2448.CurranAssociates,
+Inc.,2015.
+[35] IlyaSutskever,OriolVinyals,andQuocVVLe. Sequencetosequencelearningwithneural
+networks. InAdvancesinNeuralInformationProcessingSystems,pages3104–3112,2014.
+[36] ChristianSzegedy,VincentVanhoucke,SergeyIoffe,JonathonShlens,andZbigniewWojna.
+Rethinkingtheinceptionarchitectureforcomputervision. CoRR,abs/1512.00567,2015.
+[37] Vinyals&Kaiser, Koo, Petrov, Sutskever, andHinton. Grammarasaforeignlanguage. In
+AdvancesinNeuralInformationProcessingSystems,2015.
+[38] Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc V Le, Mohammad Norouzi, Wolfgang
+Macherey,MaximKrikun,YuanCao,QinGao,KlausMacherey,etal. Google’sneuralmachine
+translationsystem: Bridgingthegapbetweenhumanandmachinetranslation. arXivpreprint
+arXiv:1609.08144,2016.
+[39] Jie Zhou, Ying Cao, Xuguang Wang, Peng Li, and Wei Xu. Deep recurrent models with
+fast-forwardconnectionsforneuralmachinetranslation. CoRR,abs/1606.04199,2016.
+[40] Muhua Zhu, Yue Zhang, Wenliang Chen, Min Zhang, and Jingbo Zhu. Fast and accurate
+shift-reduceconstituentparsing. InProceedingsofthe51stAnnualMeetingoftheACL(Volume
+1: LongPapers),pages434–443.ACL,August2013.
+12

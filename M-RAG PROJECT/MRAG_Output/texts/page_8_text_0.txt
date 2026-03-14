@@ -1,0 +1,50 @@
+Table2: TheTransformerachievesbetterBLEUscoresthanpreviousstate-of-the-artmodelsonthe
+English-to-GermanandEnglish-to-Frenchnewstest2014testsatafractionofthetrainingcost.
+BLEU TrainingCost(FLOPs)
+Model
+EN-DE EN-FR EN-DE EN-FR
+ByteNet[18] 23.75
+Deep-Att+PosUnk[39] 39.2 1.0·1020
+GNMT+RL[38] 24.6 39.92 2.3·1019 1.4·1020
+ConvS2S[9] 25.16 40.46 9.6·1018 1.5·1020
+MoE[32] 26.03 40.56 2.0·1019 1.2·1020
+Deep-Att+PosUnkEnsemble[39] 40.4 8.0·1020
+GNMT+RLEnsemble[38] 26.30 41.16 1.8·1020 1.1·1021
+ConvS2SEnsemble[9] 26.36 41.29 7.7·1019 1.2·1021
+Transformer(basemodel) 27.3 38.1 3.3·1018
+Transformer(big) 28.4 41.8 2.3·1019
+ResidualDropout Weapplydropout[33]totheoutputofeachsub-layer,beforeitisaddedtothe
+sub-layerinputandnormalized. Inaddition,weapplydropouttothesumsoftheembeddingsandthe
+positionalencodingsinboththeencoderanddecoderstacks. Forthebasemodel,weusearateof
+P =0.1.
+drop
+LabelSmoothing Duringtraining,weemployedlabelsmoothingofvalueϵ = 0.1[36]. This
+ls
+hurtsperplexity,asthemodellearnstobemoreunsure,butimprovesaccuracyandBLEUscore.
+6 Results
+6.1 MachineTranslation
+OntheWMT2014English-to-Germantranslationtask,thebigtransformermodel(Transformer(big)
+inTable2)outperformsthebestpreviouslyreportedmodels(includingensembles)bymorethan2.0
+BLEU,establishinganewstate-of-the-artBLEUscoreof28.4. Theconfigurationofthismodelis
+listedinthebottomlineofTable3. Trainingtook3.5dayson8P100GPUs. Evenourbasemodel
+surpassesallpreviouslypublishedmodelsandensembles,atafractionofthetrainingcostofanyof
+thecompetitivemodels.
+OntheWMT2014English-to-Frenchtranslationtask,ourbigmodelachievesaBLEUscoreof41.0,
+outperformingallofthepreviouslypublishedsinglemodels,atlessthan1/4thetrainingcostofthe
+previousstate-of-the-artmodel. TheTransformer(big)modeltrainedforEnglish-to-Frenchused
+dropoutrateP =0.1,insteadof0.3.
+drop
+Forthebasemodels,weusedasinglemodelobtainedbyaveragingthelast5checkpoints,which
+werewrittenat10-minuteintervals. Forthebigmodels,weaveragedthelast20checkpoints. We
+usedbeamsearchwithabeamsizeof4andlengthpenaltyα = 0.6[38]. Thesehyperparameters
+werechosenafterexperimentationonthedevelopmentset. Wesetthemaximumoutputlengthduring
+inferencetoinputlength+50,butterminateearlywhenpossible[38].
+Table2summarizesourresultsandcomparesourtranslationqualityandtrainingcoststoothermodel
+architecturesfromtheliterature. Weestimatethenumberoffloatingpointoperationsusedtotraina
+modelbymultiplyingthetrainingtime,thenumberofGPUsused,andanestimateofthesustained
+single-precisionfloating-pointcapacityofeachGPU5.
+6.2 ModelVariations
+ToevaluatetheimportanceofdifferentcomponentsoftheTransformer,wevariedourbasemodel
+indifferentways,measuringthechangeinperformanceonEnglish-to-Germantranslationonthe
+5Weusedvaluesof2.8,3.7,6.0and9.5TFLOPSforK80,K40,M40andP100,respectively.
+8

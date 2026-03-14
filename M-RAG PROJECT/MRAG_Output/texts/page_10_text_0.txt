@@ -1,0 +1,48 @@
+Table4: TheTransformergeneralizeswelltoEnglishconstituencyparsing(ResultsareonSection23
+ofWSJ)
+Parser Training WSJ23F1
+Vinyals&Kaiserelal. (2014)[37] WSJonly,discriminative 88.3
+Petrovetal. (2006)[29] WSJonly,discriminative 90.4
+Zhuetal. (2013)[40] WSJonly,discriminative 90.4
+Dyeretal. (2016)[8] WSJonly,discriminative 91.7
+Transformer(4layers) WSJonly,discriminative 91.3
+Zhuetal. (2013)[40] semi-supervised 91.3
+Huang&Harper(2009)[14] semi-supervised 91.3
+McCloskyetal. (2006)[26] semi-supervised 92.1
+Vinyals&Kaiserelal. (2014)[37] semi-supervised 92.1
+Transformer(4layers) semi-supervised 92.7
+Luongetal. (2015)[23] multi-task 93.0
+Dyeretal. (2016)[8] generative 93.3
+increasedthemaximumoutputlengthtoinputlength+300. Weusedabeamsizeof21andα=0.3
+forbothWSJonlyandthesemi-supervisedsetting.
+Our results in Table 4 show that despite the lack of task-specific tuning our model performs sur-
+prisinglywell,yieldingbetterresultsthanallpreviouslyreportedmodelswiththeexceptionofthe
+RecurrentNeuralNetworkGrammar[8].
+IncontrasttoRNNsequence-to-sequencemodels[37],theTransformeroutperformstheBerkeley-
+Parser[29]evenwhentrainingonlyontheWSJtrainingsetof40Ksentences.
+7 Conclusion
+Inthiswork,wepresentedtheTransformer,thefirstsequencetransductionmodelbasedentirelyon
+attention,replacingtherecurrentlayersmostcommonlyusedinencoder-decoderarchitectureswith
+multi-headedself-attention.
+For translation tasks, the Transformer can be trained significantly faster than architectures based
+on recurrent or convolutional layers. On both WMT 2014 English-to-German and WMT 2014
+English-to-Frenchtranslationtasks,weachieveanewstateoftheart. Intheformertaskourbest
+modeloutperformsevenallpreviouslyreportedensembles.
+Weareexcitedaboutthefutureofattention-basedmodelsandplantoapplythemtoothertasks. We
+plantoextendtheTransformertoproblemsinvolvinginputandoutputmodalitiesotherthantextand
+toinvestigatelocal,restrictedattentionmechanismstoefficientlyhandlelargeinputsandoutputs
+suchasimages,audioandvideo. Makinggenerationlesssequentialisanotherresearchgoalsofours.
+The code we used to train and evaluate our models is available at https://github.com/
+tensorflow/tensor2tensor.
+Acknowledgements WearegratefultoNalKalchbrennerandStephanGouwsfortheirfruitful
+comments,correctionsandinspiration.
+References
+[1] JimmyLeiBa,JamieRyanKiros,andGeoffreyEHinton. Layernormalization. arXivpreprint
+arXiv:1607.06450,2016.
+[2] DzmitryBahdanau,KyunghyunCho,andYoshuaBengio. Neuralmachinetranslationbyjointly
+learningtoalignandtranslate. CoRR,abs/1409.0473,2014.
+[3] DennyBritz,AnnaGoldie,Minh-ThangLuong,andQuocV.Le. Massiveexplorationofneural
+machinetranslationarchitectures. CoRR,abs/1703.03906,2017.
+[4] JianpengCheng,LiDong,andMirellaLapata. Longshort-termmemory-networksformachine
+reading. arXivpreprintarXiv:1601.06733,2016.
+10

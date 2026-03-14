@@ -1,0 +1,54 @@
+Table1: Maximumpathlengths,per-layercomplexityandminimumnumberofsequentialoperations
+fordifferentlayertypes. nisthesequencelength,distherepresentationdimension,kisthekernel
+sizeofconvolutionsandrthesizeoftheneighborhoodinrestrictedself-attention.
+LayerType ComplexityperLayer Sequential MaximumPathLength
+Operations
+Self-Attention O(n2·d) O(1) O(1)
+Recurrent O(n·d2) O(n) O(n)
+Convolutional O(k·n·d2) O(1) O(log (n))
+k
+Self-Attention(restricted) O(r·n·d) O(1) O(n/r)
+3.5 PositionalEncoding
+Sinceourmodelcontainsnorecurrenceandnoconvolution,inorderforthemodeltomakeuseofthe
+orderofthesequence,wemustinjectsomeinformationabouttherelativeorabsolutepositionofthe
+tokensinthesequence. Tothisend,weadd"positionalencodings"totheinputembeddingsatthe
+bottomsoftheencoderanddecoderstacks. Thepositionalencodingshavethesamedimensiond
+model
+astheembeddings,sothatthetwocanbesummed. Therearemanychoicesofpositionalencodings,
+learnedandfixed[9].
+Inthiswork,weusesineandcosinefunctionsofdifferentfrequencies:
+PE =sin(pos/100002i/dmodel)
+(pos,2i)
+PE =cos(pos/100002i/dmodel)
+(pos,2i+1)
+whereposisthepositionandiisthedimension. Thatis,eachdimensionofthepositionalencoding
+correspondstoasinusoid. Thewavelengthsformageometricprogressionfrom2πto10000·2π. We
+chosethisfunctionbecausewehypothesizeditwouldallowthemodeltoeasilylearntoattendby
+relativepositions,sinceforanyfixedoffsetk,PE canberepresentedasalinearfunctionof
+pos+k
+PE .
+pos
+Wealsoexperimentedwithusinglearnedpositionalembeddings[9]instead,andfoundthatthetwo
+versionsproducednearlyidenticalresults(seeTable3row(E)).Wechosethesinusoidalversion
+becauseitmayallowthemodeltoextrapolatetosequencelengthslongerthantheonesencountered
+duringtraining.
+4 WhySelf-Attention
+In this section we compare various aspects of self-attention layers to the recurrent and convolu-
+tionallayerscommonlyusedformappingonevariable-lengthsequenceofsymbolrepresentations
+(x ,...,x ) to another sequence of equal length (z ,...,z ), with x ,z ∈ Rd, such as a hidden
+1 n 1 n i i
+layerinatypicalsequencetransductionencoderordecoder. Motivatingouruseofself-attentionwe
+considerthreedesiderata.
+Oneisthetotalcomputationalcomplexityperlayer. Anotheristheamountofcomputationthatcan
+beparallelized,asmeasuredbytheminimumnumberofsequentialoperationsrequired.
+Thethirdisthepathlengthbetweenlong-rangedependenciesinthenetwork. Learninglong-range
+dependenciesisakeychallengeinmanysequencetransductiontasks. Onekeyfactoraffectingthe
+abilitytolearnsuchdependenciesisthelengthofthepathsforwardandbackwardsignalshaveto
+traverseinthenetwork. Theshorterthesepathsbetweenanycombinationofpositionsintheinput
+andoutputsequences,theeasieritistolearnlong-rangedependencies[12]. Hencewealsocompare
+themaximumpathlengthbetweenanytwoinputandoutputpositionsinnetworkscomposedofthe
+differentlayertypes.
+AsnotedinTable1,aself-attentionlayerconnectsallpositionswithaconstantnumberofsequentially
+executed operations, whereas a recurrent layer requires O(n) sequential operations. In terms of
+computationalcomplexity,self-attentionlayersarefasterthanrecurrentlayerswhenthesequence
+6

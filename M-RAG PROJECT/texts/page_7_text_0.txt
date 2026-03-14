@@ -1,0 +1,47 @@
+length n is smaller than the representation dimensionality d, which is most often the case with
+sentencerepresentationsusedbystate-of-the-artmodelsinmachinetranslations,suchasword-piece
+[38]andbyte-pair[31]representations. Toimprovecomputationalperformancefortasksinvolving
+verylongsequences,self-attentioncouldberestrictedtoconsideringonlyaneighborhoodofsizerin
+theinputsequencecenteredaroundtherespectiveoutputposition. Thiswouldincreasethemaximum
+pathlengthtoO(n/r). Weplantoinvestigatethisapproachfurtherinfuturework.
+Asingleconvolutionallayerwithkernelwidthk <ndoesnotconnectallpairsofinputandoutput
+positions. DoingsorequiresastackofO(n/k)convolutionallayersinthecaseofcontiguouskernels,
+orO(log (n))inthecaseofdilatedconvolutions[18], increasingthelengthofthelongestpaths
+k
+betweenanytwopositionsinthenetwork. Convolutionallayersaregenerallymoreexpensivethan
+recurrent layers, by a factor of k. Separable convolutions [6], however, decrease the complexity
+considerably, toO(k·n·d+n·d2). Evenwithk = n, however, thecomplexityofaseparable
+convolutionisequaltothecombinationofaself-attentionlayerandapoint-wisefeed-forwardlayer,
+theapproachwetakeinourmodel.
+Assidebenefit,self-attentioncouldyieldmoreinterpretablemodels.Weinspectattentiondistributions
+fromourmodelsandpresentanddiscussexamplesintheappendix. Notonlydoindividualattention
+headsclearlylearntoperformdifferenttasks,manyappeartoexhibitbehaviorrelatedtothesyntactic
+andsemanticstructureofthesentences.
+5 Training
+Thissectiondescribesthetrainingregimeforourmodels.
+5.1 TrainingDataandBatching
+We trained on the standard WMT 2014 English-German dataset consisting of about 4.5 million
+sentencepairs. Sentenceswereencodedusingbyte-pairencoding[3],whichhasasharedsource-
+targetvocabularyofabout37000tokens. ForEnglish-French,weusedthesignificantlylargerWMT
+2014English-Frenchdatasetconsistingof36Msentencesandsplittokensintoa32000word-piece
+vocabulary[38].Sentencepairswerebatchedtogetherbyapproximatesequencelength.Eachtraining
+batchcontainedasetofsentencepairscontainingapproximately25000sourcetokensand25000
+targettokens.
+5.2 HardwareandSchedule
+Wetrainedourmodelsononemachinewith8NVIDIAP100GPUs. Forourbasemodelsusing
+thehyperparametersdescribedthroughoutthepaper,eachtrainingsteptookabout0.4seconds. We
+trainedthebasemodelsforatotalof100,000stepsor12hours. Forourbigmodels,(describedonthe
+bottomlineoftable3),steptimewas1.0seconds. Thebigmodelsweretrainedfor300,000steps
+(3.5days).
+5.3 Optimizer
+WeusedtheAdamoptimizer[20]withβ =0.9,β =0.98andϵ=10−9. Wevariedthelearning
+1 2
+rateoverthecourseoftraining,accordingtotheformula:
+lrate=d−0.5 ·min(step_num−0.5,step_num·warmup_steps−1.5) (3)
+model
+Thiscorrespondstoincreasingthelearningratelinearlyforthefirstwarmup_stepstrainingsteps,
+anddecreasingitthereafterproportionallytotheinversesquarerootofthestepnumber. Weused
+warmup_steps=4000.
+5.4 Regularization
+Weemploythreetypesofregularizationduringtraining:
+7
