@@ -21,7 +21,7 @@ The pipeline processes text, tables, and images, stores embeddings in a vector d
 
 Clone the repository:
 
-git clone https://github.com/your-Dinnesh G R/MRAG-Pipeline.git
+git clone https://github.com/your-DinneshGR/MRAG-Pipeline.git
 cd MRAG-Pipeline
 
 Install dependencies:
@@ -87,4 +87,4 @@ Support for multiple document formats
 👨‍💻 Author
 
 Your Name
-GitHub: https://github.com/Dinnesh G R
+GitHub: https://github.com/DinneshGR
