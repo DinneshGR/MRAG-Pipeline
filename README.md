@@ -1,3 +1,6 @@
+A Multimodal Retrieval-Augmented Generation (MRAG) Pipeline for extracting and retrieving information from research documents such as PDFs.
+The pipeline processes text, tables, and images, stores embeddings in a vector database, and enables efficient retrieval for downstream AI applications.
+
 📌 Features
 
 📄 PDF Document Processing
@@ -116,7 +119,11 @@ Web interface for document querying
 
 Support for multiple document formats
 
+📜 License
+
+This project is licensed under the MIT License.
+
 👨‍💻 Author
 
 Your Name
-GitHub: https://github.com/Dinnesh GR
+GitHub: https://github.com/your-username
